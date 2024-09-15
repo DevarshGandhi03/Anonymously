@@ -27,7 +27,7 @@ export interface UserInterface extends Document {
   verifyToken: string;
   verifyTokenExpiry: number;
   forgetPasswordToken: string;
-  forgetPasswordTokenExpiry: Date;
+  forgetPasswordTokenExpiry: number;
   isAcceptingMessage: boolean;
   messages: MessageInterface[];
 }
@@ -55,7 +55,7 @@ const UserSchema: Schema<UserInterface> = new Schema({
   verifyToken: String,
   verifyTokenExpiry: Number,
   forgetPasswordToken: String,
-  forgetPasswordTokenExpiry: Date,
+  forgetPasswordTokenExpiry: Number,
   isAcceptingMessage: {
     type: Boolean,
     default: true,

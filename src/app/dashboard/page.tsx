@@ -18,11 +18,8 @@ import { AcceptMessageSchema } from "@/schemas/acceptMessageSchema";
 import { useRouter } from "next/navigation";
 
 function UserDashboard() {
-  const router=useRouter()
   const { data: session } = useSession();
-  if(!session){
-    router.replace("/")
-  }
+  
   
   const [messages, setMessages] = useState<MessageInterface[]>([]);
   const [isLoading, setIsLoading] = useState(false);

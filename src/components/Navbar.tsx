@@ -9,11 +9,6 @@ import { User } from "next-auth";
 function Navbar() {
   const { data: session } = useSession();
   const user: User = session?.user;
-  // const pubLink = window.location.pathname.split("/");
-
-  // console.log(session);
-  // console.log(user);
-
   return (
     <nav className="p-4 md:p-6 shadow-md bg-gray-50 text-gray-900">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -27,14 +22,6 @@ function Navbar() {
             </span>
           
               <div>
-                <Link href="/dashboard">
-                  <Button
-                    className="w-full md:w-auto bg-slate-100 text-black mx-3"
-                    variant={"outline"}
-                  >
-                    Dashboard
-                  </Button>
-                </Link>
                 <Button
                   onClick={() => signOut()}
                   className="w-full md:w-auto bg-slate-100 text-black"
