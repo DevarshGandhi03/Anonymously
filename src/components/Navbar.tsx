@@ -9,7 +9,7 @@ import { User } from "next-auth";
 function Navbar() {
   const { data: session } = useSession();
   const user: User = session?.user;
-  const pubLink = window.location.pathname.split("/");
+  // const pubLink = window.location.pathname.split("/");
 
   // console.log(session);
   // console.log(user);
@@ -25,7 +25,7 @@ function Navbar() {
             <span className="mr-4 font-semibold">
               Welcome, {user.username || user.email}
             </span>
-            {pubLink[1] !== "u" ? (
+          
               <div>
                 <Link href="/dashboard">
                   <Button
@@ -43,9 +43,8 @@ function Navbar() {
                   Logout
                 </Button>
               </div>
-            ) : (
-              <></>
-            )}
+           
+        
           </>
         ) : (
           <div>
