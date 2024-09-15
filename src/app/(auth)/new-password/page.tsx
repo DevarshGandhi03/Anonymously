@@ -43,7 +43,7 @@ export default function ProfileForm() {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
    const searchParams= useSearchParams(); 
-   const username=(searchParams.get("username"));
+   const username=searchParams.get("username");
    const token= searchParams.get("forgetPasswordToken")
    const router= useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
