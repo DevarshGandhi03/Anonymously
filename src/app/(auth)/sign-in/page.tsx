@@ -115,15 +115,15 @@ export default function SignInForm() {
               Sign up
             </Link>
           </p>
-          {/* <p>
-            Don't remember your password?{" "}
+          <p>
+            Don&apos;t remember your password?{" "}
             <Link
               href="/forgot-password"
               className="text-blue-600 hover:text-blue-800"
             >
               Forgot password
             </Link>
-          </p> */}
+          </p>
         </div>
       </div>
     </div>
