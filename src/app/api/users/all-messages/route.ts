@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     await dbConnect();
     const session = await getServerSession(authOptions);
     const _user = session?.user;
-    console.log(_user);
+    // console.log(_user);
     
   
     if (!session || !_user) {
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
         { $sort: { 'messages.createdAt': -1 } },
         { $group: { _id: '$_id', messages: { $push: '$messages' } } },
       ]).exec();
-      console.log(user);
+      // console.log(user);
       
   
       if ( user.length === 0) {

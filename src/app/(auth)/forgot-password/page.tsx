@@ -46,7 +46,6 @@ export default function ProfileForm() {
     try {
       setLoading(true)
       const response=await axios.post("/api/users/forgot-password",data)
-      // console.log(response);
       
       toast({
         title: 'Success',
@@ -54,7 +53,6 @@ export default function ProfileForm() {
       });
       
     } catch (error) {
-      // console.log(error);
       
       setLoading(true)
       const axiosError:any = error as AxiosError;

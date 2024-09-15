@@ -18,11 +18,11 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { loginSchema } from "@/schemas/loginSchema";
 import { useState } from "react";
-import {  Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function SignInForm() {
   const router = useRouter();
-  const [isSubmitting,setIsSubmitting]=useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -34,13 +34,12 @@ export default function SignInForm() {
 
   const { toast } = useToast();
   const onSubmit = async (data: z.infer<typeof loginSchema>) => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     const result = await signIn("credentials", {
       redirect: false,
       identifier: data.identifier,
       password: data.password,
     });
-    
 
     if (result?.error) {
       if (result.error === "CredentialsSignin") {
@@ -49,7 +48,7 @@ export default function SignInForm() {
           description: "Incorrect username or password",
           variant: "destructive",
         });
-      } else  {
+      } else {
         toast({
           title: "Error",
           description: result.error,
@@ -61,7 +60,7 @@ export default function SignInForm() {
     if (result?.url) {
       router.replace("/dashboard");
     }
-    setIsSubmitting(false)
+    setIsSubmitting(false);
   };
 
   return (
@@ -98,13 +97,14 @@ export default function SignInForm() {
               )}
             />
             <Button className="w-full" type="submit" disabled={isSubmitting}>
-             
-              {isSubmitting?(<>
+              {isSubmitting ? (
+                <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Please wait
-                </>):(
-                  "Sign In"
-                )}
+                </>
+              ) : (
+                "Sign In"
+              )}
             </Button>
           </form>
         </Form>
@@ -115,12 +115,15 @@ export default function SignInForm() {
               Sign up
             </Link>
           </p>
-          <p>
+          {/* <p>
             Don't remember your password?{" "}
-            <Link href="/forgot-password" className="text-blue-600 hover:text-blue-800">
+            <Link
+              href="/forgot-password"
+              className="text-blue-600 hover:text-blue-800"
+            >
               Forgot password
             </Link>
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
