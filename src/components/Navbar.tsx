@@ -50,7 +50,7 @@ function Navbar() {
           <div>
             <Link href="/sign-in">
               <Button
-                className="mx-4 w-full md:w-auto bg-slate-100 text-black"
+                className="my-3 w-full md:w-auto bg-slate-100 text-black md:mx-3 md:my-0  "
                 variant={"outline"}
               >
                 Login
