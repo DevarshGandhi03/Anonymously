@@ -15,5 +15,5 @@ export const signUpSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email adderess" }).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,"Please enter a valid email adderess"),
   password: z
     .string()
-    .min(6, { message: "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit" }).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/,{message: "Password must be at least 6 characters with one uppercase, lowercase letters, special character and alteast one digit"})
+    .min(6, { message: "Password must be at least 6 characters with one uppercase, lowercase letters,special character and alteast one digit" }).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/,{message: "Password must be at least 6 characters with one uppercase, lowercase letters, special character and alteast one digit"})
 });

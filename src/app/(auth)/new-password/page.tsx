@@ -26,11 +26,11 @@ const formSchema = z.object({
     .string()
     .min(6, {
       message:
-        "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit",
+        "Password must be at least 6 characters with one uppercase, lowercase letters,special character and alteast one digit",
     })
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/, {
       message:
-        "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit",
+        "Password must be at least 6 characters with one uppercase, lowercase letters,special character and alteast one digit",
     }),
   confirmpassword: z
     .string()
