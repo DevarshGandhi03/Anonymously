@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   }
 
   const link =
-    request.url.replace("api/users/forgot-password", "new-password") +
+    "https://anonymously-ochre.vercel.app/new-password" +
     "?forgetPasswordToken=" +
     otp +
     "&username=" +

@@ -19,7 +19,6 @@ export async function GET(request: Request) {
     };
 
     const result = UserNameQuerySchema.safeParse(queryParams);
-    console.log(result);
     
     
     if (!result.success) {
