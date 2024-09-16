@@ -28,7 +28,7 @@ const formSchema = z.object({
       message:
         "Password must be at least 6 characters with one uppercase, lowercase letters,special character and alteast one digit",
     })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/, {
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*().]).{6,20}$/, {
       message:
         "Password must be at least 6 characters with one uppercase, lowercase letters,special character and alteast one digit",
     }),
@@ -38,7 +38,7 @@ const formSchema = z.object({
       message:
         "Password must be at least 6 characters with one uppercase, lowercase letters,special character and alteast one digit",
     })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/, {
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*().]).{6,20}$/, {
       message:
         "Password must be at least 6 characters with one uppercase, lowercase letters,special character and alteast one digit",
     }),
