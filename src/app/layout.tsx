@@ -4,6 +4,7 @@ import "./globals.css";
 import AuthProvider from "@/context/AuthProvider";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/Navbar";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
     <AuthProvider>
       <html lang="en">
         <body className={inter.className}>
-          <Navbar />
-          {children}
-          <Toaster />
+          <Suspense>
+            <Navbar />
+            {children}
+            <Toaster />
+          </Suspense>
         </body>
       </html>
     </AuthProvider>

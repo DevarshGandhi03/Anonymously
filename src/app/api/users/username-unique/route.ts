@@ -18,6 +18,9 @@ export async function GET(request: Request) {
       username: searchParams.get("username"),
     };
 
+    console.log(queryParams);
+    
+
     const result = UserNameQuerySchema.safeParse(queryParams);
     
     
