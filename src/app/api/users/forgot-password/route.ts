@@ -17,12 +17,22 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+  if ((user?.ResendforgetPasswordTokenExpiry>Date.now())) {
+    return Response.json(
+      {
+        success: false,
+        message: "Email already sent please try again after 3 minutes",
+      },
+      { status: 400 }
+    );
+  }
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
   const hashedOtpExpiry: number = Date.now() + 300000;
 
   user.forgetPasswordToken = otp;
   user.forgetPasswordTokenExpiry = hashedOtpExpiry;
+  user.ResendforgetPasswordTokenExpiry=Date.now() + 180000;
   const res = await user.save();
 
   if (!res) {

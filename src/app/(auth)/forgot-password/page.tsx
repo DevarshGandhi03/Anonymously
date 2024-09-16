@@ -19,6 +19,7 @@ import axios, { AxiosError } from "axios"
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 const formSchema = z.object({
   email: z
@@ -31,7 +32,7 @@ const formSchema = z.object({
 })
 
 export default function ProfileForm() {
-
+  const router =useRouter();
   const [loading, setLoading] = useState(false)
   const { toast } = useToast();
   const form=useForm<z.infer<typeof formSchema>>({
@@ -51,7 +52,7 @@ export default function ProfileForm() {
         title: 'Success',
         description: response.data.message,
       });
-      
+      router.replace("/")
     } catch (error) {
       
       setLoading(true)
