@@ -118,7 +118,7 @@ export default function ProfileForm() {
             name="confirmpassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
