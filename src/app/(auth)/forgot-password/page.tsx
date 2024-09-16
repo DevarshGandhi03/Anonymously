@@ -71,6 +71,9 @@ export default function ProfileForm() {
   }
 
   return (
+    <div className="h-screen flex justify-center m-4 items-center">
+    <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md m-auto">
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4">Enter your email</h2>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -96,6 +99,6 @@ export default function ProfileForm() {
                )}
            </Button>
       </form>
-    </Form>
+    </Form></div></div>
   )
 }

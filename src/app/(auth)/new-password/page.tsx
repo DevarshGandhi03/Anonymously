@@ -22,50 +22,59 @@ import { Loader2 } from "lucide-react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 const formSchema = z.object({
- 
   newpassword: z
     .string()
     .min(6, {
       message:
         "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit",
     })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/,{message: "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit"}),
-    confirmpassword: z
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/, {
+      message:
+        "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit",
+    }),
+  confirmpassword: z
     .string()
     .min(6, {
       message:
         "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit",
     })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/,{message: "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit"}),
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{6,20}$/, {
+      message:
+        "Password must be at least 6 characters with one uppercase, lowercase letters and alteast one digit",
+    }),
 });
 
 export default function ProfileForm() {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-   const searchParams= useSearchParams(); 
-   const username=searchParams.get("username");
-   const token= searchParams.get("forgetPasswordToken")
-   const router= useRouter()
+  const searchParams = useSearchParams();
+  const username = searchParams.get("username");
+  const token = searchParams.get("forgetPasswordToken");
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      newpassword:"",
-      confirmpassword:"",
+      newpassword: "",
+      confirmpassword: "",
     },
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/verify-password", {username, verifyToken:token,newPassword:data.newpassword,confirmPassword:data.confirmpassword});
+      const response = await axios.post("/api/users/verify-password", {
+        username,
+        verifyToken: token,
+        newPassword: data.newpassword,
+        confirmPassword: data.confirmpassword,
+      });
 
       toast({
         title: "Success",
-        description: response.data.message ,
+        description: response.data.message,
       });
-      router.replace("/sign-in")
+      router.replace("/sign-in");
     } catch (error) {
-
       setLoading(true);
       const axiosError: any = error as AxiosError;
 
@@ -82,45 +91,57 @@ export default function ProfileForm() {
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="newpassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>New Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="New Password" {...field} />
-              </FormControl>
-              <FormMessage></FormMessage>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="confirmpassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="Confirm Password" {...field} />
-              </FormControl>
-              <FormMessage></FormMessage>
-            </FormItem>
-          )}
-        />
-        <Button className="w-full" type="submit" disabled={loading}>
-          {loading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Please wait
-            </>
-          ) : (
-            "Submit"
-          )}
-        </Button>
-      </form>
-    </Form>
+    <div className="h-screen flex justify-center m-4 items-center ">
+    <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md m-auto">
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4">Create a new password</h2>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="newpassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>New Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="New Password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage></FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirmpassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Confirm Password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage></FormMessage>
+              </FormItem>
+            )}
+          />
+          <Button className="w-full" type="submit" disabled={loading}>
+            {loading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Please wait
+              </>
+            ) : (
+              "Submit"
+            )}
+          </Button>
+        </form>
+      </Form>
+    </div></div>
   );
 }
