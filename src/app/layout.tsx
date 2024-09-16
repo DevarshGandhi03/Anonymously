@@ -21,6 +21,7 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en">
+        <title>Anonymously</title>
         <body className={inter.className}>
           <Suspense>
             <Navbar />
