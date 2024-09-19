@@ -9,8 +9,6 @@ const MessageSchema: Schema<MessageInterface> = new Schema({
   content: {
     type: String,
     trim: true,
-    maxlength: 30,
-    minlength: 5,
     required: true,
   },
   createdAt: {
